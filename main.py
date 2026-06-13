@@ -102,7 +102,7 @@ def validar_fila_csv(fila, numero_linea):
         if campo not in fila:
             raise ValueError(f"Linea {numero_linea}: falta la columna {campo}.")
         
-        if fila[campo] is None is fila[campo].strip() == "":
+        if fila[campo] is None or fila[campo].strip() == "":
             raise ValueError(f"Linea {numero_linea}: el campo {campo} esta vacio.")
     
     nombre = fila["nombre"].strip()
@@ -238,10 +238,10 @@ def agregar_pais(paises, nombre_archivo):
         continente = pedir_texto_no_vacio("Ingrese el continente: ")
         
         pais = {
-            "Nombre": nombre,
-            "Poblacion": poblacion,
-            "Superficie": superficie,
-            "Continente": continente
+            "nombre": nombre,
+            "poblacion": poblacion,
+            "superficie": superficie,
+            "continente": continente
         }
         
         paises.append(pais)
@@ -318,7 +318,7 @@ def filtrar_por_rango_poblacion(paises):
     else:
         mostrar_lista_paises(resultados)
 
-def filtrar_por_rango_supérficie(paises):
+def filtrar_por_rango_superficie(paises):
     minimo, maximo = pedir_rango("Superficie minima: ", "Superficie maxima: ")
     resultados = []
     
@@ -351,7 +351,7 @@ def menu_filtros(paises):
         elif opcion == 2:
             filtrar_por_rango_poblacion(paises)
         elif opcion == 3:
-            filtrar_por_rango_supérficie(paises)
+            filtrar_por_rango_superficie(paises)
         else:
             break
 
@@ -482,5 +482,5 @@ def main():
         else: 
             print("Saliendo del sistema")
 
-if __name__ == "__main___":
+if __name__ == "__main__":
     main()
