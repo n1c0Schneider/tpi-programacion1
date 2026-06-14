@@ -1,7 +1,7 @@
 # TPI Programacion 
 # Gestion de Datos de paises en Python: Filtros, ordenamientos y estadisticas
 # Autores:  - Zaccardi, Leonel
-#           - 
+#           - Schneider Nicolas
 # Conceptos Aplicados
 # - Listas
 # - Diccionarios
@@ -441,7 +441,7 @@ def mostrar_estadisticas(paises):
 # MENU PRINCIPAL
 
 def mostrar_menu():
-    print("\n=============== GESTION DE DATOS DE PAISES ================")
+    print("\n--------------- GESTION DE DATOS DE PAISES ---------------")
     print("1. Mostrar todos los paises")
     print("2. Agregar pais")
     print("3. Actualizar poblacion y superficie")
@@ -451,7 +451,7 @@ def mostrar_menu():
     print("7. Mostrar estadisticas")
     print("8. guardar datos en CSV")
     print("9. Salir")
-    print("==========================================================")
+    print("----------------------------------------------------------")
 
 def main():
     nombre_archivo = "paises.csv"
