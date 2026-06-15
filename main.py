@@ -355,6 +355,22 @@ def menu_filtros(paises):
         else:
             break
 
+# ── Funciones clave para ordenamiento y estadisticas ──────────────────────────
+
+def obtener_nombre(pais):
+    # Retorna el nombre del pais normalizado para ordenar sin importar tildes.
+    return normalizar_texto(pais["nombre"])
+
+def obtener_poblacion(pais):
+    # Retorna la poblacion del pais.
+    return pais["poblacion"]
+
+def obtener_superficie(pais):
+    # Retorna la superficie del pais.
+    return pais["superficie"]
+
+# ──────────────────────────────────────────────────────────────────────────────
+
 def ordenar_paises(paises):
     #Ordena paises por nombre, poblacion o superficie.
     print("\n--- Ordenar paises ---")
@@ -376,11 +392,11 @@ def ordenar_paises(paises):
     descendente = direccion == 2
     
     if criterio == 1:
-        paises_ordenados = sorted(paises, key=lambda pais: normalizar_texto(pais["nombre"]), reverse=descendente)
+        paises_ordenados = sorted(paises, key=obtener_nombre, reverse=descendente)
     elif criterio == 2:
-        paises_ordenados = sorted(paises, key=lambda pais: pais["poblacion"], reverse=descendente)
+        paises_ordenados = sorted(paises, key=obtener_poblacion, reverse=descendente)
     else:
-        paises_ordenados = sorted(paises, key=lambda pais: pais["superficie"], reverse=descendente)
+        paises_ordenados = sorted(paises, key=obtener_superficie, reverse=descendente)
     
     mostrar_lista_paises(paises_ordenados)
 
@@ -417,8 +433,8 @@ def mostrar_estadisticas(paises):
         print("No hay paises cargados.")
         return
     
-    pais_mayor_poblacion = max(paises, key=lambda pais: pais["poblacion"])
-    pais_menor_poblacion = min(paises, key=lambda pais: pais["poblacion"])
+    pais_mayor_poblacion = max(paises, key=obtener_poblacion)
+    pais_menor_poblacion = min(paises, key=obtener_poblacion)
     promedio_poblacion = calcular_promedio(paises, "poblacion")
     promedio_superficie = calcular_promedio(paises, "superficie")
     conteo_continentes = cantidad_por_continente(paises)
